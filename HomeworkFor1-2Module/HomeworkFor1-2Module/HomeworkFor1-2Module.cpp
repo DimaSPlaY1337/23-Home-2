@@ -32,47 +32,47 @@ int main()
     ParamMat = TestMat;
     ParamMat.ShowMatrix();
 
-    /*cout << "Create new matrix" << endl;
-    MatrixClass<float> ConsoleMat(PlaceForMatrix::Console);
-    cout << "ThirdMatrix:" << endl;
-    ConsoleMat.ShowMatrix();*/
+    cout << "create new matrix" << endl;
+    MatrixClass<float> consolemat(PlaceForMatrix::Console);
+    cout << "thirdmatrix:" << endl;
+    consolemat.ShowMatrix();
 
-    /*cout << "FirstMatrix + ThirdMatrix:" << endl;
-    MatrixFromFile + ConsoleMat;
+    cout << "firstmatrix + thirdmatrix:" << endl;
+    MatrixFromFile + consolemat;
 
-    cout << "FirstMatrix - ThirdMatrix:" << endl;
-    MatrixFromFile - ConsoleMat;
+    cout << "firstmatrix - thirdmatrix:" << endl;
+    MatrixFromFile - consolemat;
 
-    cout << "FirstMatrix * SecondMatrix:" << endl;
+    cout << "firstmatrix * secondmatrix:" << endl;
     MatrixFromFile * TestMat;
 
-    cout << "FirstMatrix * 2:" << endl;
-    MatrixFromFile * 2;*/
+    cout << "firstmatrix * 2:" << endl;
+    MatrixFromFile * 2;
 
 
-    //cout << "FirstMatrix*2 replace 1 line with 2:" << endl;
-    //thread th1([&]()
-    //    {
-    //        MatrixFromFile.ChangePlaceOfLines(1, 2);
-    //    });
-    //th1.join();
-    //MatrixFromFile.ShowMatrix();
+    cout << "FirstMatrix*2 replace 1 line with 2:" << endl;
+    thread th1([&]()
+        {
+            MatrixFromFile.ChangePlaceOfLines(1, 2);
+        });
+    th1.join();
+    MatrixFromFile.ShowMatrix();
 
-    //cout << "Changed FirstMatrix Line 1 * 2:" << endl;
-    //thread th2([&]()
-    //    {
-    //        MatrixFromFile.MultiplyLine(1, 2);
-    //    });
-    //th2.join();
-    //MatrixFromFile.ShowMatrix();
-    //
-    //cout << "Changed FirstMatrix Line 1 + line 2 * 3:" << endl;
-    //thread th3([&]()
-    //    {
-    //        MatrixFromFile.LinePlusMultiplyLine(1, 2, 3);
-    //    });
-    //th3.join();
-    //MatrixFromFile.ShowMatrix();
+    cout << "Changed FirstMatrix Line 1 * 2:" << endl;
+    thread th2([&]()
+        {
+            MatrixFromFile.MultiplyLine(1, 2);
+        });
+    th2.join();
+    MatrixFromFile.ShowMatrix();
+    
+    cout << "Changed FirstMatrix Line 1 + line 2 * 3:" << endl;
+    thread th3([&]()
+        {
+            MatrixFromFile.LinePlusMultiplyLine(1, 2, 3);
+        });
+    th3.join();
+    MatrixFromFile.ShowMatrix();
 
     cout << "FirstMatrix == 2?:";
     if (MatrixFromFile == 2)
