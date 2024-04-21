@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <thread>
 #include "Types.h"
 #include <vector>
 #include <string> 
@@ -21,14 +22,14 @@ public:
 
 	static MatrixClass ZeroMatrix(int lines, int columns)
 	{
-		MatrixClass<float> ZeroMat(columns, lines);
+		MatrixClass<T> ZeroMat(columns, lines);
 		ZeroMat.ZeroInitializeMatrix();
 		return ZeroMat;
 	}
 
 	static MatrixClass ASingleMatrix(int lines, int columns)
 	{
-		MatrixClass<float> SingleMat(columns, lines);
+		MatrixClass<T> SingleMat(columns, lines);
 		SingleMat.ZeroInitializeMatrix();
 		for (int i = 0; i < columns; i++)
 			for (int j = 0; j < lines; j++)
@@ -74,18 +75,18 @@ public:
 	{
 		lines = mat.lines;
 		columns = mat.columns;
-		matrix = new float* [mat.lines];
+		matrix = new T* [mat.lines];
 		for (int i = 0; i < (mat.lines >= mat.columns ? mat.lines : mat.columns); i++)
-			matrix[i] = new float[mat.columns];
+			matrix[i] = new T[mat.columns];
 	}
 
 	MatrixClass(int columns, int lines)
 	{
 		this->lines = lines;
 		this->columns = columns;
-		matrix = new float* [lines];
+		matrix = new T* [lines];
 		for (int i = 0; i < lines; i++)
-			matrix[i] = new float[columns];
+			matrix[i] = new T[columns];
 	}
 
 	void ReadMatrixFromFile(char* FilePath)
@@ -156,33 +157,45 @@ public:
 
 	void ChangePlaceOfLines(int FirstLine, int SecondLine)
 	{
-		FirstLine -= 1;
-		SecondLine -= 1;
-		for (int i = 0; i < columns; i++)
-		{
-			int s = matrix[i][FirstLine];
-			matrix[i][FirstLine] = matrix[i][SecondLine];
-			matrix[i][SecondLine] = s;
-		}
+		thread th([&]()
+			{
+				FirstLine -= 1;
+				SecondLine -= 1;
+				for (int i = 0; i < columns; i++)
+				{
+					int s = matrix[i][FirstLine];
+					matrix[i][FirstLine] = matrix[i][SecondLine];
+					matrix[i][SecondLine] = s;
+				}
+			});
+		th.join();
 	}
 
 	void MultiplyLine(int Line, int Multiplier)
 	{
-		Line -= 1;
-		for (int i = 0; i < columns; i++)
-		{
-			matrix[i][Line] *= Multiplier;
-		}
+		thread th([&]()
+			{
+				Line -= 1;
+				for (int i = 0; i < columns; i++)
+				{
+					matrix[i][Line] *= Multiplier;
+				}
+			});
+		th.join();
 	}
 
 	void LinePlusMultiplyLine(int FirstLine, int SecondLine, int Multiplier)
 	{
-		FirstLine -= 1;
-		SecondLine -= 1;
-		for (int i = 0; i < columns; i++)
-		{
-			matrix[i][FirstLine] += matrix[i][SecondLine] * Multiplier;
-		}
+		thread th([&]()
+			{
+				FirstLine -= 1;
+				SecondLine -= 1;
+				for (int i = 0; i < columns; i++)
+				{
+					matrix[i][FirstLine] += matrix[i][SecondLine] * Multiplier;
+				}
+			});
+		th.join();
 	}
 
 	void operator*(MatrixClass& Matrix)
@@ -421,7 +434,7 @@ public:
 
 	void InitializeMatrixFromConsole()
 	{
-		int n;
+		T n;
 		int elements = 0;
 		int cols = 0;
 		int rows = 0;
@@ -443,10 +456,10 @@ public:
 
 	void CreateMatrix()
 	{
-		matrix = new float* [lines];//массив указателей
+		matrix = new T* [lines];//массив указателей
 		for (int i = 0; i < (lines >= columns ? lines : columns); i++)
 		{
-			matrix[i] = new float[columns];
+			matrix[i] = new T[columns];
 		}
 	}
 
@@ -464,7 +477,7 @@ public:
 		}
 		else {
 			for (int n = 0; n < lines; n++) {
-				MatrixClass<vector<int>> algdop(lines - 1, columns - 1);
+				MatrixClass<T> algdop(lines - 1, columns - 1);
 				for (int i = 1; i < lines; i++) {
 					int flag = 0;
 					for (int j = 0; j < columns; j++) {
@@ -484,7 +497,7 @@ public:
 	}
 
 	MatrixClass operator!() {
-		MatrixClass<float> obratn_matr(lines, columns);
+		MatrixClass<T> obratn_matr(lines, columns);
 		float opred = opredelitel();
 		if (opred == 0) {
 			cout << "Cant get reverse matrix" << endl;
@@ -523,7 +536,7 @@ public:
 		return obratn_matr;
 	}
 
-	float** matrix;
+	T** matrix;
 	PlaceForMatrix Place = PlaceForMatrix::None;
 	unsigned int columns, lines = 0;
 };
