@@ -16,6 +16,7 @@ public:
 			delete[] matrix[i];
 		}
 		delete[] matrix;
+		//cout << "Matrix deleted" << endl;
 	}
 
 	static MatrixClass ZeroMatrix(int lines, int columns)
@@ -298,7 +299,7 @@ public:
 		}
 	}
 
-	bool operator==(MatrixClass Matrix)
+	bool operator==(MatrixClass& Matrix)
 	{
 		if (lines != Matrix.lines || columns != Matrix.columns)
 		{
@@ -341,16 +342,19 @@ public:
 		return true;
 	}
 
-	bool operator!=(MatrixClass Matrix)
+	bool operator!=(MatrixClass& Matrix)
 	{
 		return !(matrix == Matrix.matrix);
 	}
 
-	void operator=(MatrixClass &Matrix)
+	void operator=(MatrixClass& Matrix)
 	{
-		matrix = Matrix.matrix;
 		columns = Matrix.columns;
 		lines = Matrix.lines;
+		CreateMatrix();
+		for (int i = 0; i < lines; i++)
+			for (int j = 0; j < columns; j++)
+				matrix[j][i] = Matrix.matrix[j][i];
 	}
 
 	void ZeroInitializeMatrix()
