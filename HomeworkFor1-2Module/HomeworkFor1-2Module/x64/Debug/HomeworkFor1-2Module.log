@@ -1,0 +1,239 @@
+﻿  HomeworkFor1-2Module.cpp
+C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(501,15): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+  (compiling source file 'HomeworkFor1-2Module.cpp')
+  C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(501,15):
+  the template instantiation context (the oldest one first) is
+  	C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\HomeworkFor1-2Module.cpp(10,33):
+  	see reference to class template instantiation 'MatrixClass<float>' being compiled
+  	C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(499,14):
+  	while compiling class template member function 'MatrixClass<float> MatrixClass<float>::operator !(void)'
+  		C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\HomeworkFor1-2Module.cpp(17,21):
+  		see the first reference to 'MatrixClass<float>::operator !' in 'main'
+  
+C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(518,21): warning C4018: '<': signed/unsigned mismatch
+  (compiling source file 'HomeworkFor1-2Module.cpp')
+  
+C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(519,22): warning C4018: '<': signed/unsigned mismatch
+  (compiling source file 'HomeworkFor1-2Module.cpp')
+  
+C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(522,23): warning C4018: '<': signed/unsigned mismatch
+  (compiling source file 'HomeworkFor1-2Module.cpp')
+  
+C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(526,24): warning C4018: '<': signed/unsigned mismatch
+  (compiling source file 'HomeworkFor1-2Module.cpp')
+  
+C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(532,74): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
+C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(532,74): warning C4244:         with
+C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(532,74): warning C4244:         [
+C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(532,74): warning C4244:             T=float
+C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(532,74): warning C4244:         ]
+  (compiling source file 'HomeworkFor1-2Module.cpp')
+  
+C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(368,21): warning C4018: '<': signed/unsigned mismatch
+  (compiling source file 'HomeworkFor1-2Module.cpp')
+  C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(368,21):
+  the template instantiation context (the oldest one first) is
+  	C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(363,7):
+  	while compiling class template member function 'void MatrixClass<float>::operator =(MatrixClass<float> &)'
+  		C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\HomeworkFor1-2Module.cpp(31,11):
+  		see the first reference to 'MatrixClass<float>::operator =' in 'main'
+  
+C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(369,22): warning C4018: '<': signed/unsigned mismatch
+  (compiling source file 'HomeworkFor1-2Module.cpp')
+  
+C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(346,21): warning C4018: '<': signed/unsigned mismatch
+  (compiling source file 'HomeworkFor1-2Module.cpp')
+  C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(346,21):
+  the template instantiation context (the oldest one first) is
+  	C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(344,7):
+  	while compiling class template member function 'bool MatrixClass<float>::operator ==(int)'
+  		C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\HomeworkFor1-2Module.cpp(65,2):
+  		see the first reference to 'MatrixClass<float>::operator ==' in 'main'
+  
+C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(350,21): warning C4018: '<': signed/unsigned mismatch
+  (compiling source file 'HomeworkFor1-2Module.cpp')
+  
+C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(351,22): warning C4018: '<': signed/unsigned mismatch
+  (compiling source file 'HomeworkFor1-2Module.cpp')
+  
+C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(250,21): warning C4018: '<': signed/unsigned mismatch
+  (compiling source file 'HomeworkFor1-2Module.cpp')
+  C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(250,21):
+  the template instantiation context (the oldest one first) is
+  	C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(248,7):
+  	while compiling class template member function 'void MatrixClass<float>::operator *(int)'
+  		C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\HomeworkFor1-2Module.cpp(49,17):
+  		see the first reference to 'MatrixClass<float>::operator *' in 'main'
+  
+C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(251,22): warning C4018: '<': signed/unsigned mismatch
+  (compiling source file 'HomeworkFor1-2Module.cpp')
+  
+C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(235,23): warning C4018: '<': signed/unsigned mismatch
+  (compiling source file 'HomeworkFor1-2Module.cpp')
+  C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(235,23):
+  the template instantiation context (the oldest one first) is
+  	C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(201,7):
+  	while compiling class template member function 'void MatrixClass<float>::operator *(MatrixClass<float> &)'
+  		C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\HomeworkFor1-2Module.cpp(46,16):
+  		see the first reference to 'MatrixClass<float>::operator *' in 'main'
+  
+C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(237,38): warning C4244: '+=': conversion from 'T' to 'int', possible loss of data
+C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(237,38): warning C4244:         with
+C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(237,38): warning C4244:         [
+C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(237,38): warning C4244:             T=float
+C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(237,38): warning C4244:         ]
+  (compiling source file 'HomeworkFor1-2Module.cpp')
+  
+C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(239,35): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  (compiling source file 'HomeworkFor1-2Module.cpp')
+  
+C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(193,23): warning C4018: '<': signed/unsigned mismatch
+  (compiling source file 'HomeworkFor1-2Module.cpp')
+  C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(193,23):
+  the template instantiation context (the oldest one first) is
+  	C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(187,7):
+  	while compiling class template member function 'void MatrixClass<float>::LinePlusMultiplyLine(int,int,int)'
+  		C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\HomeworkFor1-2Module.cpp(61,37):
+  		see the first reference to 'MatrixClass<float>::LinePlusMultiplyLine' in 'main'
+  
+C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(179,23): warning C4018: '<': signed/unsigned mismatch
+  (compiling source file 'HomeworkFor1-2Module.cpp')
+  C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(179,23):
+  the template instantiation context (the oldest one first) is
+  	C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(174,7):
+  	while compiling class template member function 'void MatrixClass<float>::MultiplyLine(int,int)'
+  		C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\HomeworkFor1-2Module.cpp(57,29):
+  		see the first reference to 'MatrixClass<float>::MultiplyLine' in 'main'
+  
+C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(164,23): warning C4018: '<': signed/unsigned mismatch
+  (compiling source file 'HomeworkFor1-2Module.cpp')
+  C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(164,23):
+  the template instantiation context (the oldest one first) is
+  	C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(158,7):
+  	while compiling class template member function 'void MatrixClass<float>::ChangePlaceOfLines(int,int)'
+  		C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\HomeworkFor1-2Module.cpp(53,35):
+  		see the first reference to 'MatrixClass<float>::ChangePlaceOfLines' in 'main'
+  
+C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(166,12): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(166,12): warning C4244:         with
+C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(166,12): warning C4244:         [
+C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(166,12): warning C4244:             T=float
+C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(166,12): warning C4244:         ]
+  (compiling source file 'HomeworkFor1-2Module.cpp')
+  
+C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(168,30): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(168,30): warning C4244:         with
+C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(168,30): warning C4244:         [
+C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(168,30): warning C4244:             T=float
+C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(168,30): warning C4244:         ]
+  (compiling source file 'HomeworkFor1-2Module.cpp')
+  
+C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(117,21): warning C4018: '<': signed/unsigned mismatch
+  (compiling source file 'HomeworkFor1-2Module.cpp')
+  C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(117,21):
+  the template instantiation context (the oldest one first) is
+  	C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(115,7):
+  	while compiling class template member function 'void MatrixClass<float>::ShowMatrix(void)'
+  		C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\HomeworkFor1-2Module.cpp(10,51):
+  		see the first reference to 'MatrixClass<float>::ShowMatrix' in 'main'
+  
+C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(118,22): warning C4018: '<': signed/unsigned mismatch
+  (compiling source file 'HomeworkFor1-2Module.cpp')
+  
+C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(15,21): warning C4018: '<': signed/unsigned mismatch
+  (compiling source file 'HomeworkFor1-2Module.cpp')
+  C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(15,21):
+  the template instantiation context (the oldest one first) is
+  	C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(13,3):
+  	while compiling class template member function 'MatrixClass<float>::~MatrixClass(void)'
+  		C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\HomeworkFor1-2Module.cpp(10,51):
+  		see the first reference to 'MatrixClass<float>::~MatrixClass' in 'main'
+  
+C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(472,22): warning C4244: 'return': conversion from 'T' to 'int', possible loss of data
+C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(472,22): warning C4244:         with
+C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(472,22): warning C4244:         [
+C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(472,22): warning C4244:             T=float
+C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(472,22): warning C4244:         ]
+  (compiling source file 'HomeworkFor1-2Module.cpp')
+  C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(472,22):
+  the template instantiation context (the oldest one first) is
+  	C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(466,6):
+  	while compiling class template member function 'int MatrixClass<float>::opredelitel(void)'
+  		C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(501,15):
+  		see the first reference to 'MatrixClass<float>::opredelitel' in 'MatrixClass<float>::operator !'
+  		C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\HomeworkFor1-2Module.cpp(17,21):
+  		see the first reference to 'MatrixClass<float>::operator !' in 'main'
+  
+C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(476,40): warning C4244: '=': conversion from 'T' to 'int', possible loss of data
+C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(476,40): warning C4244:         with
+C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(476,40): warning C4244:         [
+C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(476,40): warning C4244:             T=float
+C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(476,40): warning C4244:         ]
+  (compiling source file 'HomeworkFor1-2Module.cpp')
+  
+C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(479,22): warning C4018: '<': signed/unsigned mismatch
+  (compiling source file 'HomeworkFor1-2Module.cpp')
+  
+C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(481,23): warning C4018: '<': signed/unsigned mismatch
+  (compiling source file 'HomeworkFor1-2Module.cpp')
+  
+C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(483,24): warning C4018: '<': signed/unsigned mismatch
+  (compiling source file 'HomeworkFor1-2Module.cpp')
+  
+C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(493,19): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  (compiling source file 'HomeworkFor1-2Module.cpp')
+  
+C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(460,21): warning C4018: '<': signed/unsigned mismatch
+  (compiling source file 'HomeworkFor1-2Module.cpp')
+  C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(460,21):
+  the template instantiation context (the oldest one first) is
+  	C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(457,7):
+  	while compiling class template member function 'void MatrixClass<float>::CreateMatrix(void)'
+  		C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(367,15):
+  		see the first reference to 'MatrixClass<float>::CreateMatrix' in 'MatrixClass<float>::operator ='
+  		C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\HomeworkFor1-2Module.cpp(31,11):
+  		see the first reference to 'MatrixClass<float>::operator =' in 'main'
+  
+C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(419,26): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(419,26): warning C4244:         with
+C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(419,26): warning C4244:         [
+C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(419,26): warning C4244:             T=float
+C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(419,26): warning C4244:         ]
+  (compiling source file 'HomeworkFor1-2Module.cpp')
+  C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(419,26):
+  the template instantiation context (the oldest one first) is
+  	C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(409,7):
+  	while compiling class template member function 'void MatrixClass<float>::InitializeMatrixFromFile(char *)'
+  		C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(97,27):
+  		see the first reference to 'MatrixClass<float>::InitializeMatrixFromFile' in 'MatrixClass<float>::ReadMatrixFromFile'
+  		C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\HomeworkFor1-2Module.cpp(22,35):
+  		see the first reference to 'MatrixClass<float>::ReadMatrixFromFile' in 'main'
+  
+C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(375,21): warning C4018: '<': signed/unsigned mismatch
+  (compiling source file 'HomeworkFor1-2Module.cpp')
+  C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(375,21):
+  the template instantiation context (the oldest one first) is
+  	C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(373,7):
+  	while compiling class template member function 'void MatrixClass<float>::ZeroInitializeMatrix(void)'
+  		C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(504,36):
+  		see the first reference to 'MatrixClass<float>::ZeroInitializeMatrix' in 'MatrixClass<float>::operator !'
+  		C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\HomeworkFor1-2Module.cpp(17,21):
+  		see the first reference to 'MatrixClass<float>::operator !' in 'main'
+  
+C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(376,22): warning C4018: '<': signed/unsigned mismatch
+  (compiling source file 'HomeworkFor1-2Module.cpp')
+  
+C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(79,21): warning C4018: '<': signed/unsigned mismatch
+  (compiling source file 'HomeworkFor1-2Module.cpp')
+  C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(79,21):
+  the template instantiation context (the oldest one first) is
+  	C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(74,2):
+  	while compiling class template member function 'MatrixClass<float>::MatrixClass(MatrixClass<float> &)'
+  		C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\MatrixClass.h(505,4):
+  		see the first reference to 'MatrixClass<float>::MatrixClass' in 'MatrixClass<float>::operator !'
+  		C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\HomeworkFor1-2Module\HomeworkFor1-2Module.cpp(17,21):
+  		see the first reference to 'MatrixClass<float>::operator !' in 'main'
+  
+  MatrixClass.cpp
+  Generating Code...
+  HomeworkFor1-2Module.vcxproj -> C:\Users\PC\Desktop\Repos\23-Home-2\HomeworkFor1-2Module\x64\Debug\HomeworkFor1-2Module.exe
