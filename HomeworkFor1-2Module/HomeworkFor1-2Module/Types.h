@@ -1,8 +1,9 @@
 #pragma once
 
-enum class PlaceForMatrix : int
+enum class TheOriginOfTheMatrix : int
 {
 	None,
 	Console,
+	Blocks,
 	File
 };

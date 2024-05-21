@@ -6,79 +6,38 @@ using namespace std;
 
 int main()
 {
-	int s = 2;
-	(MatrixClass<float>::ZeroMatrix(s, s)).ShowMatrix();
-	(MatrixClass<float>::ASingleMatrix(s, s)).ShowMatrix();
-
-	cout << "Add elements: " << endl;
-	MatrixClass<float> ParamMat(s, s);
-	ParamMat.InitializeMatrixFromConsole();
-	ParamMat.ShowMatrix();
-	ParamMat.ShowMatrix((!ParamMat).matrix, s, s);
-
 	cout << "FirstMatrix:" << endl;
-	MatrixClass<float> MatrixFromFile(PlaceForMatrix::File);
-	char FirstFilePath[] = "C:\\Users\\PC\\Desktop\\Лабы\\Программ\\Дз\\ReadMe.txt";
-	MatrixFromFile.ReadMatrixFromFile(FirstFilePath);
-	MatrixFromFile.ShowMatrix();
+	MatrixClass<float> TestMat1(TheOriginOfTheMatrix::File);
+	char FirstFilePath[] = "C:\\Users\PC\\Desktop\\Repos\\23-Home-2\\HomeworkFor1-2Module\\ReadMe.txt";
+	TestMat1.ReadMatrixFromFile(FirstFilePath);
+	//TestMat1.ShowMatrix();
 
 	cout << "SecondMatrix:" << endl;
-	MatrixClass<float> TestMat(PlaceForMatrix::File);
-	char SecondFilePath[] = "C:\\Users\\PC\\Desktop\\Лабы\\Программ\\Дз\\ReadMeAgain.txt";
-	TestMat.ReadMatrixFromFile(SecondFilePath);
-	TestMat.ShowMatrix();
+	MatrixClass<float> TestMat2(TheOriginOfTheMatrix::File);
+	char SecondFilePath[] = "C:\\Users\PC\\Desktop\\Repos\\23-Home-2\\HomeworkFor1-2Module\\ReadMeAgain.txt";
+	TestMat2.ReadMatrixFromFile(SecondFilePath);
+	//TestMat2.ShowMatrix();
 
-	ParamMat = TestMat;
-	ParamMat.ShowMatrix();
+	/*TestMat1 + TestMat1;
+	TestMat1 - TestMat1;
+	if (TestMat1 == TestMat1)
+	{
+		cout << "true" << endl;
+		cout << endl;
+	}
 
-	cout << "create new matrix" << endl;
-	MatrixClass<float> consolemat(PlaceForMatrix::Console);
-	cout << "thirdmatrix:" << endl;
-	consolemat.ShowMatrix();
+	if (TestMat1 == 1)
+	{
+		cout << "true" << endl;
+		cout << endl;
+	}
 
-	cout << "firstmatrix + thirdmatrix:" << endl;
-	MatrixFromFile + consolemat;
+	TestMat1 * 2;*/
 
-	cout << "firstmatrix - thirdmatrix:" << endl;
-	MatrixFromFile - consolemat;
-
-	cout << "firstmatrix * secondmatrix:" << endl;
-	MatrixFromFile* TestMat;
-
-	cout << "firstmatrix * 2:" << endl;
-	MatrixFromFile * 2;
-
-
-	cout << "FirstMatrix*2 replace 1 line with 2:" << endl;
-	MatrixFromFile.ChangePlaceOfLines(1, 2);
-	MatrixFromFile.ShowMatrix();
-
-	cout << "Changed FirstMatrix Line 1 * 2:" << endl;
-	MatrixFromFile.MultiplyLine(1, 2);
-	MatrixFromFile.ShowMatrix();
-
-	cout << "Changed FirstMatrix Line 1 + line 2 * 3:" << endl;
-	MatrixFromFile.LinePlusMultiplyLine(1, 2, 3);
-	MatrixFromFile.ShowMatrix();
-
-	cout << "FirstMatrix == 2?:";
-	if (MatrixFromFile == 2)
-		cout << " Yes" << endl;
-	else
-		cout << " No" << endl;
-
-	cout << "FirstMatrix == SecondMatrix?:";
-	if (MatrixFromFile == TestMat)
-		cout << " Yes" << endl;
-	else
-		cout << " No" << endl;
-
-	cout << "FirstMatrix != SecondMatrix?:";
-	if (MatrixFromFile != TestMat)
-		cout << " Yes" << endl;
-	else
-		cout << " No" << endl;
+	//MatrixClass<float> Block1(TestMat1, TestMat2, false);
+	//MatrixClass<float> Block2(TestMat1, TestMat2, true);
+	//Block1.Plus(Block1);
+	//Block1.Multiply(Block2);
 
 	return 0;
-
 }

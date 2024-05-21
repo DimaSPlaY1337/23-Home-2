@@ -1,9 +1,12 @@
 #include <iostream>
 #include <fstream>
+#include <future>
 #include <thread>
 #include "Types.h"
+#include <queue>
 #include <vector>
 #include <string> 
+#include <chrono>
 using namespace std;
 
 template <typename T>
@@ -17,7 +20,6 @@ public:
 			delete[] matrix[i];
 		}
 		delete[] matrix;
-		//cout << "Matrix deleted" << endl;
 	}
 
 	static MatrixClass ZeroMatrix(int lines, int columns)
@@ -42,16 +44,19 @@ public:
 		return SingleMat;
 	}
 
-	MatrixClass(PlaceForMatrix Place)
+	MatrixClass(MatrixClass& mat1, MatrixClass& mat2, bool Place)
+	{
+		CreateMatrixWithBlocks(mat1, mat2, Place);
+	}
+
+	MatrixClass(TheOriginOfTheMatrix Place)
 	{
 		switch (Place)
 		{
-		case PlaceForMatrix::None:
+		case TheOriginOfTheMatrix::None:
 			break;
-		case PlaceForMatrix::Console:
+		case TheOriginOfTheMatrix::Console:
 		{
-			Place = PlaceForMatrix::Console;
-
 			cout << "Write count of lines:" << endl;
 			cin >> lines;
 
@@ -60,9 +65,8 @@ public:
 			ReadMatrixFromConsole();
 			break;
 		}
-		case PlaceForMatrix::File:
+		case TheOriginOfTheMatrix::File:
 		{
-			Place = PlaceForMatrix::File;
 			break;
 		}
 
@@ -71,12 +75,96 @@ public:
 		}
 	}
 
+	void CreateMatrixWithBlocks(MatrixClass& mat1, MatrixClass& mat2, bool Place)
+	{
+		lines1 = mat1.lines;
+		lines2 = mat2.lines;
+		columns1 = mat1.columns;
+		columns2 = mat2.columns;
+		flag = true;
+		//снизу приписываем
+		if (Place == true && mat1.columns == mat2.columns)
+		{
+			int CachedLines = mat1.lines;
+			columns = mat1.columns;
+			lines = mat1.lines + mat2.lines;
+			CreateMatrix();
+
+			block1 = new T * [lines1];//массив указателей
+			for (int i = 0; i < lines1; i++)
+			{
+				block1[i] = new T[columns1];
+			}
+			block2 = new T * [lines2];//массив указателей
+			for (int i = 0; i < lines2; i++)
+			{
+				block2[i] = new T[columns2];
+			}
+
+			for (int i = 0; i < CachedLines; i++)
+				for (int j = 0; j < columns; j++)
+				{
+					block1[i][j] = mat1.matrix[i][j];
+					matrix[i][j] = mat1.matrix[i][j];
+				}
+
+			for (int i = CachedLines; i < lines; i++)
+				for (int j = 0; j < columns; j++)
+				{
+					block2[i - columns][j] = mat2.matrix[i - columns][j];
+					matrix[i][j] = mat2.matrix[i - columns][j];
+				}
+
+			//ShowMatrix(matrix, lines, columns);
+		}
+		//справа приписываем
+		else if (Place == false && mat1.lines == mat2.lines)
+		{
+			int CachedColumns = mat1.columns;
+			lines = mat1.lines;
+			columns = mat1.columns + mat2.columns;
+			CreateMatrix();
+
+			block1 = new T * [lines1];//массив указателей
+			for (int i = 0; i < lines1; i++)
+			{
+				block1[i] = new T[columns1];
+			}
+			block2 = new T * [lines2];//массив указателей
+			for (int i = 0; i < lines2; i++)
+			{
+				block2[i] = new T[columns2];
+			}
+
+			for (int i = 0; i < lines; i++)
+				for (int j = 0; j < CachedColumns; j++)
+				{
+					block1[i][j] = mat1.matrix[i][j];
+					matrix[i][j] = mat1.matrix[i][j];
+				}
+
+			for (int i = 0; i < lines; i++)
+				for (int j = CachedColumns; j < columns; j++)
+				{
+					block2[i][j - CachedColumns] = mat2.matrix[i][j - CachedColumns];
+					matrix[i][j] = mat2.matrix[i][j - CachedColumns];
+				}
+
+			//ShowMatrix(matrix, lines, columns);
+		}
+		else
+		{
+			flag = false;
+			cout << "Bad matrix added" << endl;
+		}
+	}
+
 	MatrixClass(MatrixClass& mat)
 	{
 		lines = mat.lines;
 		columns = mat.columns;
-		matrix = new T* [mat.lines];
-		for (int i = 0; i < (mat.lines >= mat.columns ? mat.lines : mat.columns); i++)
+		matrix = new T * [mat.lines];
+		for (int i = 0; i < mat.lines; i++)
 			matrix[i] = new T[mat.columns];
 	}
 
@@ -84,7 +172,7 @@ public:
 	{
 		this->lines = lines;
 		this->columns = columns;
-		matrix = new T* [lines];
+		matrix = new T * [lines];
 		for (int i = 0; i < lines; i++)
 			matrix[i] = new T[columns];
 	}
@@ -119,28 +207,28 @@ public:
 			{
 				if (j == columns - 1)
 				{
-					cout << matrix[j][i] << endl;
+					cout << matrix[i][j] << endl;
 				}
 				else
 				{
-					cout << matrix[j][i] << " ";
+					cout << matrix[i][j] << " ";
 				}
 			}
 		cout << endl;
 	}
 
-	void ShowMatrix(float** matrix, int rows, int cols)
+	void ShowMatrix(T** matrix, int rows, int cols)
 	{
 		for (int i = 0; i < rows; i++)
 			for (int j = 0; j < cols; j++)
 			{
 				if (j == cols - 1)
 				{
-					cout << matrix[j][i] << endl;
+					cout << matrix[i][j] << endl;
 				}
 				else
 				{
-					cout << matrix[j][i] << " ";
+					cout << matrix[i][j] << " ";
 				}
 			}
 		cout << endl;
@@ -247,93 +335,270 @@ public:
 
 	void operator*(int scalar)
 	{
+		int col = columns;
+		vector<thread> threads;
 		for (int i = 0; i < lines; i++)
-			for (int j = 0; j < columns; j++)
-				matrix[j][i] *= 2;
+		{
+			threads.emplace_back([this, &scalar, i, col] {
+				for (int j = 0; j < col; j++)
+					matrix[i][j] *= scalar;
+				});
+		}
+		for (int i = 0; i < threads.size(); i++)
+			threads[i].join();
 
 		ShowMatrix();
 	}
 
-	void operator+(MatrixClass& Matrix)
+	MatrixClass operator+(MatrixClass& Matrix)
 	{
+		MatrixClass<T> MClass(Matrix.columns, Matrix.lines);
+		vector<thread> threads;
+		int col = columns;
 		if (lines != Matrix.lines || columns != Matrix.columns)
 		{
 			cout << "You cant do this" << endl;
 		}
 		else
 		{
-			int CountOfElements = lines * Matrix.columns;
-			int HalfCountOfElements;
-			if (CountOfElements % 2 == 0)
+			for (int i = 0; i < lines; i++)
 			{
-				HalfCountOfElements = CountOfElements / 2;
+				threads.emplace_back([this, i, col, &MClass, &Matrix] {
+					for (int j = 0; j < columns; j++)
+						MClass.matrix[i][j] = matrix[i][j] + Matrix.matrix[i][j];
+					});
+			}
+
+			for (int i = 0; i < threads.size(); i++)
+				threads[i].join();
+
+			ShowMatrix(MClass.matrix, lines, columns);
+			return MClass;
+		}
+	}
+
+	void InitializeBlocks(int lines1, int columns1, int lines2, int columns2)
+	{
+		block1 = new T * [lines1];//массив указателей
+		for (int i = 0; i < lines1; i++)
+		{
+			block1[i] = new T[columns1];
+		}
+		block2 = new T * [lines2];//массив указателей
+		for (int i = 0; i < lines2; i++)
+		{
+			block2[i] = new T[columns2];
+		}
+	}
+
+	void MatrixSum(int lines, int columns, MatrixClass& mat1, MatrixClass& mat2, MatrixClass& mat3, int index)
+	{
+		if (index == 1)
+		{
+			for (int i = 0; i < lines; i++)
+				for (int j = 0; j < columns; j++)
+					mat1.block1[i][j] = mat2.block1[i][j] + mat3.block1[i][j];
+		}
+		else if (index == 2)
+		{
+			for (int i = 0; i < lines; i++)
+				for (int j = 0; j < columns; j++)
+					mat1.block2[i][j] = mat2.block2[i][j] + mat3.block2[i][j];
+		}
+		else
+		{
+			for (int i = 0; i < lines; i++)
+				for (int j = 0; j < columns; j++)
+					mat1.matrix[i][j] = mat2.matrix[i][j] + mat3.matrix[i][j];
+		}
+	}
+
+	MatrixClass Plus(MatrixClass& Matrix)
+	{
+		MatrixClass<T> MClass(Matrix.columns, Matrix.lines);
+		auto begin = chrono::high_resolution_clock::now();
+		queue<future<void>> queue;
+		MClass.InitializeBlocks(Matrix.lines1, Matrix.columns1, Matrix.lines2, Matrix.columns2);
+
+		if (lines1 == Matrix.lines1 && lines2 == Matrix.lines2 &&
+			columns1 == Matrix.columns1 && columns2 == Matrix.columns2 && flag)
+		{
+
+			queue.push(async(launch::async, &MatrixClass::MatrixSum, this, lines1, columns1, ref(MClass), ref(*this), ref(Matrix), 1));
+			queue.push(async(launch::async, &MatrixClass::MatrixSum, this, lines2, columns2, ref(MClass), ref(*this), ref(Matrix), 2));
+			queue.push(async(launch::async, &MatrixClass::MatrixSum, this, lines, columns, ref(MClass), ref(*this), ref(Matrix), 0));
+
+			while (!queue.empty())
+			{
+				queue.front().wait();
+				queue.pop();
+			}
+
+
+			auto end = chrono::high_resolution_clock::now();
+			auto elapsed_ms = chrono::duration_cast<chrono::milliseconds>(end - begin);
+			std::cout << "The time: " << elapsed_ms.count() << " ms\n";
+			//ShowMatrix(MClass.matrix, lines, columns);
+			return MClass;
+		}
+		else
+		{
+			cout << "You cant do this" << endl;
+			return MClass;
+		}
+
+	}
+
+	void MatrixMultiply(int lines, int columns, MatrixClass& mat1, MatrixClass& mat2, MatrixClass& mat3, int index)
+	{
+		int element;
+		int SdvigLine = 0;
+		int SdvigCol = 0;
+
+		if (index == 1)
+		{
+			if (mat2.columns1 != mat3.lines1)
+			{
+				cout << "You cant multiply" << endl;
 			}
 			else
 			{
-				HalfCountOfElements = CountOfElements / 2 - 1;
+				while (SdvigLine != lines)
+				{
+					while (SdvigCol != columns)
+					{
+						element = 0;
+						for (int i = 0; i < lines; i++)
+						{
+							element += mat2.block1[SdvigLine][i] * mat3.block1[i][SdvigCol];
+						}
+						mat1.block1[SdvigLine][SdvigCol] = element;
+						SdvigCol += 1;
+					}
+					SdvigLine += 1;
+					SdvigCol = 0;
+				}
 			}
-			float** NewMat = new float* [HalfCountOfElements];//массив указателей
-			for (int i = 0; i < HalfCountOfElements; i++)
-			{
-				NewMat[i] = new float[HalfCountOfElements];
-			}
-
-			for (int i = 0; i < HalfCountOfElements; i++)
-				for (int j = 0; j < HalfCountOfElements; j++)
-					NewMat[j][i] = matrix[j][i] + Matrix.matrix[j][i];
-
-			ShowMatrix(NewMat, HalfCountOfElements, HalfCountOfElements);
 		}
+		else if (index == 2)
+		{
+			if (mat2.columns1 != mat3.lines1)
+			{
+				cout << "You cant multiply" << endl;
+			}
+			else
+			{
+				while (SdvigLine != lines)
+				{
+					while (SdvigCol != columns)
+					{
+						element = 0;
+						for (int i = 0; i < lines; i++)
+						{
+							element += mat2.block2[SdvigLine][i] * mat3.block2[i][SdvigCol];
+						}
+						mat1.block2[SdvigLine][SdvigCol] = element;
+						SdvigCol += 1;
+					}
+					SdvigLine += 1;
+					SdvigCol = 0;
+				}
+			}
+		}
+		else
+		{
+			for (int i = 0; i < lines; i++)
+				for (int j = 0; j < columns; j++)
+					mat1.matrix[i][j] = mat1.block1[i][j] + mat1.block2[i][j];
+		}
+	}
+
+	MatrixClass Multiply(MatrixClass& Matrix)
+	{
+		MatrixClass<T> MClass(lines, Matrix.columns);
+		MClass.InitializeBlocks(Matrix.lines1, Matrix.columns1, Matrix.lines2, Matrix.columns2);
+		if (flag && lines == Matrix.columns)
+		{
+			queue<future<void>> queue;
+
+			auto begin = chrono::high_resolution_clock::now();
+
+			queue.push(async(launch::async, &MatrixClass::MatrixMultiply, this, lines1, Matrix.columns1, ref(MClass), ref(*this), ref(Matrix), 1));
+			//queue.push(async(launch::async, &MatrixClass::MatrixMultiply, this, lines2, Matrix.columns2, ref(MClass), ref(*this), ref(Matrix), 2));
+			//queue.push(async(launch::async, &MatrixClass::MatrixMultiply, this, lines, Matrix.columns, ref(MClass), ref(*this), ref(Matrix), 0));
+
+			while (!queue.empty())
+			{
+				queue.front().wait();
+				queue.pop();
+			}
+			//MatrixMultiply(lines1, Matrix.columns1, MClass, *this, Matrix, 1);
+			MatrixMultiply(lines2, Matrix.columns2, MClass, *this, Matrix, 2);
+			MatrixMultiply(lines, Matrix.columns, MClass, *this, Matrix, 0);
+
+			auto end = chrono::high_resolution_clock::now();
+			auto elapsed_ms = chrono::duration_cast<chrono::milliseconds>(end - begin);
+			std::cout << "The time: " << elapsed_ms.count() << " ms\n";
+			//ShowMatrix(MClass.matrix, lines, Matrix.columns);
+
+		}
+		else
+		{
+			cout << "lines != Matrix.columns" << endl;
+		}
+		return MClass;
 	}
 
 	void operator-(MatrixClass& Matrix)
 	{
+		int col = columns;
+		vector<thread> threads;
 		if (lines != Matrix.lines || columns != Matrix.columns)
 		{
 			cout << "You cant do this" << endl;
 		}
 		else
 		{
-			int CountOfElements = columns * Matrix.lines;
-			int HalfCountOfElements;
-			if (CountOfElements % 2 == 0)
-				HalfCountOfElements = CountOfElements / 2;
-			else
-				HalfCountOfElements = CountOfElements / 2 - 1;
-			float** NewMat = new float* [HalfCountOfElements];//массив указателей
-			for (int i = 0; i < HalfCountOfElements; i++)
-				NewMat[i] = new float[HalfCountOfElements];
+			float** NewMat = new float* [lines];//массив указателей
+			for (int i = 0; i < columns; i++)
+				NewMat[i] = new float[columns];
 
-			for (int i = 0; i < HalfCountOfElements; i++)
-				for (int j = 0; j < HalfCountOfElements; j++)
-					NewMat[i][j] = matrix[i][j] - Matrix.matrix[i][j];
+			for (int i = 0; i < lines; i++)
+			{
+				threads.emplace_back([this, i, col, &NewMat, &Matrix] {
+					for (int j = 0; j < col; j++)
+						NewMat[i][j] = matrix[i][j] - Matrix.matrix[i][j];
+					});
+			}
+				
+			for (int i = 0; i < threads.size(); i++)
+				threads[i].join();
 
-			ShowMatrix(NewMat, HalfCountOfElements, HalfCountOfElements);
+			ShowMatrix(NewMat, lines, columns);
 		}
 	}
 
 	bool operator==(MatrixClass& Matrix)
 	{
+		int col = columns;
+		vector<thread> threads;
 		if (lines != Matrix.lines || columns != Matrix.columns)
 		{
 			return false;
 		}
 		int CountOfElements = lines * Matrix.columns;
-		int HalfCountOfElements;
-		if (CountOfElements % 2 == 0)
+		int count = 0;
+		for (int i = 0; i < lines; i++)
 		{
-			HalfCountOfElements = CountOfElements / 2;
-		}
-		else
-		{
-			HalfCountOfElements = CountOfElements / 2 - 1;
+			threads.emplace_back([this, i, col, &count, &Matrix] {
+				for (int j = 0; j < col; j++)
+					if (matrix[i][j] == Matrix.matrix[i][j])
+						count += 1;
+				});
 		}
 
-		int count = 0;
-		for (int i = 0; i < HalfCountOfElements; i++)
-			for (int j = 0; j < HalfCountOfElements; j++)
-				if (matrix[j][i] == Matrix.matrix[j][i])
-					count += 1;
+		for (int i = 0; i < threads.size(); i++)
+			threads[i].join();
 
 		if (count != CountOfElements)
 			return false;
@@ -343,14 +608,23 @@ public:
 
 	bool operator==(int scalar)
 	{
+		int col = columns;
+		vector<thread> threads;
 		for (int i = 1; i < lines; i++)
 			if (matrix[i][i] != scalar)
 				return false;
 
 		for (int i = 0; i < lines; i++)
-			for (int j = 0; j < columns; j++)
-				if (i != j && matrix[j][i] != 0)
-					return false;
+		{
+			threads.emplace_back([this, i, col] {
+				for (int j = 0; j < col; j++)
+					if (i != j && matrix[i][j] != 0)
+						return false;
+				});
+		}
+
+		for (int i = 0; i < threads.size(); i++)
+			threads[i].join();
 
 		return true;
 	}
@@ -362,19 +636,27 @@ public:
 
 	void operator=(MatrixClass& Matrix)
 	{
+		int col = columns;
+		vector<thread> threads;
 		columns = Matrix.columns;
 		lines = Matrix.lines;
 		CreateMatrix();
 		for (int i = 0; i < lines; i++)
-			for (int j = 0; j < columns; j++)
-				matrix[j][i] = Matrix.matrix[j][i];
+		{
+			threads.emplace_back([this, i, col] {
+				for (int j = 0; j < columns; j++)
+					matrix[j][i] = Matrix.matrix[j][i];
+				});
+		}
+		for (int i = 0; i < threads.size(); i++)
+			threads[i].join();
 	}
 
 	void ZeroInitializeMatrix()
 	{
 		for (int i = 0; i < lines; i++)
 			for (int j = 0; j < columns; j++)
-				matrix[j][i] = 0;
+				matrix[i][j] = 0;
 	}
 
 	void CalculateParametrsOfMatrix(char* FilePath)
@@ -416,7 +698,7 @@ public:
 			int rows = 0;
 			while (in >> n)
 			{
-				matrix[cols][rows] = n;
+				matrix[rows][cols] = n;
 				cols += 1;
 				if (cols == columns)
 				{
@@ -456,8 +738,8 @@ public:
 
 	void CreateMatrix()
 	{
-		matrix = new T* [lines];//массив указателей
-		for (int i = 0; i < (lines >= columns ? lines : columns); i++)
+		matrix = new T * [lines];//массив указателей
+		for (int i = 0; i < lines; i++)
 		{
 			matrix[i] = new T[columns];
 		}
@@ -536,7 +818,11 @@ public:
 		return obratn_matr;
 	}
 
+	bool flag = false;
+	T** block1;
+	T** block2;
 	T** matrix;
-	PlaceForMatrix Place = PlaceForMatrix::None;
 	unsigned int columns, lines = 0;
+	unsigned int columns1, lines1 = 0;
+	unsigned int columns2, lines2 = 0;
 };
